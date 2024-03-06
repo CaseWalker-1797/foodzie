@@ -3,14 +3,19 @@ import React from "react";
 import AuthNav from "./AuthNav";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AppNav from "./AppNav";
 
 const Stack = createNativeStackNavigator();
 
 const MainNav = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        initialRouteName="App"
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen name="Auth" component={AuthNav} />
+        <Stack.Screen name="App" component={AppNav} />
       </Stack.Navigator>
     </NavigationContainer>
   );

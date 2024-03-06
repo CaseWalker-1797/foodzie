@@ -61,6 +61,7 @@ const SignInScreen = () => {
           <TextInput
             mode="outlined"
             className="flex-1"
+            secureTextEntry={true}
             activeOutlineColor={themeColors.bgColor(1)}
             outlineColor="gray"
             theme={{ colors: { background: "white" } }}
@@ -70,12 +71,15 @@ const SignInScreen = () => {
           />
         </View>
         {/* Forgot Password Button */}
-        <TouchableOpacity className="items-end">
+        <TouchableOpacity
+          className="items-end"
+          onPress={() => navigation.navigate("ForgotPassword-")}
+        >
           <Text className="text-base font-semibold">Forgot Password</Text>
         </TouchableOpacity>
         {/* SignIn Button */}
         <TouchableOpacity
-          className="items-center p-4 rounded-full"
+          className="items-center p-3 rounded-full"
           style={{ backgroundColor: themeColors.bgColor(1), elevation: 4 }}
           onPress={onSignInPress}
         >
@@ -98,7 +102,7 @@ const SignInScreen = () => {
           />
         </View>
         {/* Go to Sign Up Message */}
-        <View className="flex-row justify-center items-center space-x-2">
+        <View className="flex-row justify-center items-center space-x-2 pb-4">
           <Text className="text-base font-semibold">
             Don't have an account ?
           </Text>

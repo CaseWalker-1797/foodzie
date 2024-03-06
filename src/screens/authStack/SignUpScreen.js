@@ -29,21 +29,7 @@ const SignUpScreen = () => {
       setMsg(msg2);
       setVisible(true);
     } else {
-      console.log(
-        "before++++++++++++++++",
-        name,
-        email,
-        password,
-        confirmPassword
-      );
       newUser({ name, email, password, confirmPassword });
-      console.log(
-        "after++++++++++++++++",
-        name,
-        email,
-        password,
-        confirmPassword
-      );
     }
   };
 
@@ -141,7 +127,7 @@ const SignUpScreen = () => {
           />
         </View>
         {/* Go to Sign Up Message */}
-        <View className="flex-row justify-center items-center space-x-2">
+        <View className="flex-row justify-center items-center space-x-2 pb-4">
           <Text className="text-base font-semibold">
             Already have an account ?
           </Text>
