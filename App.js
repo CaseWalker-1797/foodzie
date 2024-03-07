@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import MainNav from "./src/navigation/MainNav";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import React from 'react';
+import MainNav from './src/navigation/MainNav';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider} from 'react-redux';
+import store from './src/redux/store/Store';
 
 const App = () => {
   return (
     <SafeAreaProvider>
-      <MainNav />
+      <Provider store={store}>
+        <MainNav />
+      </Provider>
     </SafeAreaProvider>
   );
 };
