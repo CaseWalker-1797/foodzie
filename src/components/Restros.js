@@ -19,9 +19,12 @@ const Restros = () => {
   }, []);
   return (
     <View>
-      {restros.map((foodCourt, index) => (
+      {restros.map(foodCourt => (
         <>
-          <View key={index} className="flex-row justify-between items-center">
+          <View
+            key={foodCourt._id}
+            className="flex-row justify-between items-center"
+          >
             <Text className="font-bold text-xl">{foodCourt.court}</Text>
             <TouchableOpacity>
               <Text

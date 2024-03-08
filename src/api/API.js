@@ -3,7 +3,7 @@ import Axios from 'react-native-axios';
 import _ from 'lodash';
 
 export const newUser = ({name, email, password, confirmPassword}) => {
-  Axios.post('http://192.168.1.10:3000/api/v1/user/signup', {
+  Axios.post(urlFor + '/api/v1/user/signup', {
     name: name,
     email: email,
     password: password,
@@ -18,7 +18,7 @@ export const newUser = ({name, email, password, confirmPassword}) => {
 };
 
 export const checkUser = ({email, password}) => {
-  Axios.post('http://192.168.1.10:3000/api/v1/user/login', {
+  Axios.post(urlFor + '/api/v1/user/login', {
     email: email,
     password: password,
   })
@@ -30,12 +30,12 @@ export const checkUser = ({email, password}) => {
     });
 };
 
-export const urlFor = 'http://192.168.1.10:3000';
+export const urlFor = 'http://192.168.1.8:3000';
 
 export const getCategory = async () => {
   const res = await Axios({
     method: 'GET',
-    url: 'http://192.168.1.10:3000/api/v1/menu/util/getCategory',
+    url: urlFor + '/api/v1/menu/util/getCategory',
   });
   const data1 = res.data.data;
   return data1;
@@ -44,14 +44,23 @@ export const getCategory = async () => {
 export const getAllRestro = async () => {
   const res = await Axios({
     method: 'GET',
-    url: 'http://192.168.1.10:3000/api/v1/restaurant',
+    url: urlFor + '/api/v1/restaurant',
   });
   const data1 = res.data.data;
-  const byCourt = _.groupBy(data1, ({ foodCourt }) => foodCourt);
-  
-  let arr = Object.keys(byCourt).map((key) => {
-    return { court : key,data : byCourt[key] }
+  const byCourt = _.groupBy(data1, ({foodCourt}) => foodCourt);
+
+  let arr = Object.keys(byCourt).map(key => {
+    return {court: key, data: byCourt[key]};
   });
-  // console.log("data ===++>> ",arr[1].data[0])
+  // console.log('Item ++>>>>', arr[0].data[2]);
   return arr;
+};
+
+export const getMenuRestroById = async ({id}) => {
+  const res = await Axios({
+    method: 'GET',
+    url: urlFor + `/api/v1/menu/resto/${id}`,
+  });
+  const data1 = res.data.data;
+  return data1;
 };

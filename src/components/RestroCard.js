@@ -32,7 +32,9 @@ const RestroCard = ({item}) => {
             width: '100%',
           }}
         />
-        <View className="justify-center p-4 space-y-1">
+        <View
+          id={item.id}
+          className="justify-center p-4 space-y-1">
           <Text className="text-lg font-bold">{item.name}</Text>
           <View className="flex-row items-center space-x-1">
             <Image

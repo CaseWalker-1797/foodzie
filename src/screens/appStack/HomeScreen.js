@@ -1,4 +1,10 @@
-import {View, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Icon} from 'react-native-paper';
@@ -36,7 +42,7 @@ const HomeScreen = () => {
         {/* Categories Row */}
         <Categories />
       </View>
-      <ScrollView className="border border-red-500 p-2">
+      <ScrollView className="p-2">
         {/* Restaurant Row */}
         <Restros />
       </ScrollView>

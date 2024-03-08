@@ -20,7 +20,7 @@ const Categories = () => {
         showsHorizontalScrollIndicator={false}
         className="overflow-visible"
       >
-        {categories?.map((item, index) => {
+        {categories?.map(item => {
           let isActive = item.category == active;
           let btnClass = isActive ? ' bg-gray-600' : ' bg-white-100';
           let textClass = isActive
@@ -29,7 +29,7 @@ const Categories = () => {
           return (
             <View className="justify-center items-center mx-3">
               <TouchableOpacity
-                key={item._id}
+                key={item.id}
                 className={'rounded-full' + btnClass}
                 onPress={() => setActive(item.category)}
               >
