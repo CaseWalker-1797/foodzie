@@ -1,7 +1,7 @@
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {getCategory, urlFor} from '../api/API';
-import {horizontalScale, verticalScale} from '../styles/utilites/Dimension';
+import {getCategory, urlFor} from '../../api/API';
+import {horizontalScale, verticalScale} from '../utilites/Dimension';
 
 const Categories = () => {
   const [active, setActive] = useState(null);

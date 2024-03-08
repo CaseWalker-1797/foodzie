@@ -1,15 +1,15 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {horizontalScale, verticalScale} from '../styles/utilites/Dimension';
-import {themeColors} from '../styles/theme';
+import {horizontalScale, verticalScale} from '../utilites/Dimension';
+import {themeColors} from '../utilites/theme';
 import {Icon} from 'react-native-paper';
-import {urlFor} from '../api/API';
+import {urlFor} from '../../api/API';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   addToCart,
   removeFromCart,
   selectCartItemsById,
-} from '../redux/slices/cartSlice';
+} from '../../redux/slices/cartSlice';
 
 const DishCard = ({dish}) => {
   const dispatch = useDispatch();

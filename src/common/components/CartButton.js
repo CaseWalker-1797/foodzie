@@ -6,10 +6,10 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {themeColors} from '../styles/theme';
+import {themeColors} from '../utilites/theme';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
-import {selectCartItems, selectCartTotal} from '../redux/slices/cartSlice';
+import {selectCartItems, selectCartTotal} from '../../redux/slices/cartSlice';
 
 const CartButton = () => {
   const navigation = useNavigation();

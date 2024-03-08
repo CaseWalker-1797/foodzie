@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {themeColors} from '../../styles/theme';
+import {themeColors} from '../../common/utilites/theme';
 import {Icon} from 'react-native-paper';
 import {useSelector, useDispatch} from 'react-redux';
 import {selectRestro} from '../../redux/slices/RestroSlice';
@@ -17,7 +17,7 @@ import {
   selectCartItems,
   selectCartTotal,
 } from '../../redux/slices/cartSlice';
-import {horizontalScale, verticalScale} from '../../styles/utilites/Dimension';
+import {horizontalScale, verticalScale} from '../../common/utilites/Dimension';
 import {urlFor} from '../../api/API';
 
 const CartScreen = () => {

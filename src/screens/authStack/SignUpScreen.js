@@ -1,19 +1,19 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Icon, IconButton, TextInput, Snackbar } from "react-native-paper";
-import { themeColors } from "../../styles/theme";
-import { newUser } from "../../api/API";
+import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {Icon, IconButton, TextInput, Snackbar} from 'react-native-paper';
+import {themeColors} from '../../common/utilites/theme';
+import {newUser} from '../../api/API';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
-  const msg1 = "Please fill all the fields";
-  const msg2 = "Password and Confirm Password should be same";
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const msg1 = 'Please fill all the fields';
+  const msg2 = 'Password and Confirm Password should be same';
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [msg, setMsg] = useState(null);
   const [visible, setVisible] = useState(false);
   const onToggleSnackBar = () => setVisible(!visible);
@@ -29,7 +29,7 @@ const SignUpScreen = () => {
       setMsg(msg2);
       setVisible(true);
     } else {
-      newUser({ name, email, password, confirmPassword });
+      newUser({name, email, password, confirmPassword});
     }
   };
 
@@ -37,7 +37,7 @@ const SignUpScreen = () => {
     <SafeAreaView className="flex-1 bg-white">
       <Image
         className="w-full h-2/5"
-        source={require("../../assets/images/vector/signupImage.png")}
+        source={require('../../assets/images/vector/signupImage.png')}
       />
       <ScrollView
         className="m-2 p-2 space-y-3"
@@ -51,10 +51,10 @@ const SignUpScreen = () => {
             className="flex-1"
             activeOutlineColor={themeColors.bgColor(1)}
             outlineColor="gray"
-            theme={{ colors: { background: "white" } }}
+            theme={{colors: {background: 'white'}}}
             label="Enter your name"
             value={name}
-            onChangeText={(name) => setName(name)}
+            onChangeText={name => setName(name)}
           />
         </View>
         {/* User email */}
@@ -65,10 +65,10 @@ const SignUpScreen = () => {
             className="flex-1"
             activeOutlineColor={themeColors.bgColor(1)}
             outlineColor="gray"
-            theme={{ colors: { background: "white" } }}
+            theme={{colors: {background: 'white'}}}
             label="Enter your Email-id"
             value={email}
-            onChangeText={(email) => setEmail(email)}
+            onChangeText={email => setEmail(email)}
           />
         </View>
         {/* User password */}
@@ -80,10 +80,10 @@ const SignUpScreen = () => {
             className="flex-1"
             activeOutlineColor={themeColors.bgColor(1)}
             outlineColor="gray"
-            theme={{ colors: { background: "white" } }}
+            theme={{colors: {background: 'white'}}}
             label="Enter your Password"
             value={password}
-            onChangeText={(password) => setPassword(password)}
+            onChangeText={password => setPassword(password)}
           />
         </View>
         {/* User confirm password */}
@@ -94,10 +94,10 @@ const SignUpScreen = () => {
             className="flex-1"
             activeOutlineColor={themeColors.bgColor(1)}
             outlineColor="gray"
-            theme={{ colors: { background: "white" } }}
+            theme={{colors: {background: 'white'}}}
             label="Confirm Password"
             value={confirmPassword}
-            onChangeText={(confirmPassword) =>
+            onChangeText={confirmPassword =>
               setConfirmPassword(confirmPassword)
             }
           />
@@ -105,7 +105,7 @@ const SignUpScreen = () => {
         {/* SignUp Button */}
         <TouchableOpacity
           className="items-center p-3 rounded-full "
-          style={{ backgroundColor: themeColors.bgColor(1), elevation: 4 }}
+          style={{backgroundColor: themeColors.bgColor(1), elevation: 4}}
           onPress={onSignUpPress}
         >
           <Text className="text-xl font-bold text-white">Sign Up</Text>
@@ -114,15 +114,15 @@ const SignUpScreen = () => {
         {/* Other SignIn Button */}
         <View className="flex-row justify-center items-center">
           <IconButton
-            icon={require("../../assets/images/signin/googleLogo.png")}
+            icon={require('../../assets/images/signin/googleLogo.png')}
             size={32}
           />
           <IconButton
-            icon={require("../../assets/images/signin/appleLogo.png")}
+            icon={require('../../assets/images/signin/appleLogo.png')}
             size={32}
           />
           <IconButton
-            icon={require("../../assets/images/signin/facebookLogo.png")}
+            icon={require('../../assets/images/signin/facebookLogo.png')}
             size={32}
           />
         </View>
@@ -131,10 +131,10 @@ const SignUpScreen = () => {
           <Text className="text-base font-semibold">
             Already have an account ?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
             <Text
               className="text-base font-bold"
-              style={{ color: themeColors.bgColor(1) }}
+              style={{color: themeColors.bgColor(1)}}
             >
               Sign In
             </Text>

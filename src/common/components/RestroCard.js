@@ -7,10 +7,10 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {Drawable} from '../styles/utilites/Drawables';
-import {horizontalScale, verticalScale} from '../styles/utilites/Dimension';
+import {Drawable} from '../utilites/Drawables';
+import {horizontalScale, verticalScale} from '../utilites/Dimension';
 import {Icon} from 'react-native-paper';
-import {urlFor} from '../api/API';
+import {urlFor} from '../../api/API';
 import {useNavigation} from '@react-navigation/native';
 
 const RestroCard = ({item}) => {
@@ -32,9 +32,7 @@ const RestroCard = ({item}) => {
             width: '100%',
           }}
         />
-        <View
-          id={item.id}
-          className="justify-center p-4 space-y-1">
+        <View id={item.id} className="justify-center p-4 space-y-1">
           <Text className="text-lg font-bold">{item.name}</Text>
           <View className="flex-row items-center space-x-1">
             <Image

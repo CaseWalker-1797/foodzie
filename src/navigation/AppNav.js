@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../screens/appStack/HomeScreen';
 import RestroScreen from '../screens/appStack/RestroScreen';
 import CartScreen from '../screens/appStack/CartScreen';
+import SettingsScreen from '../screens/appStack/SettingsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ const AppNav = () => {
     >
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Restro" component={RestroScreen} />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen
         name="Cart"
         options={{presentation: 'modal'}}

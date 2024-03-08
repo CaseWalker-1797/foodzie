@@ -8,11 +8,13 @@ import {
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Icon} from 'react-native-paper';
-import {themeColors} from '../../styles/theme';
-import Categories from '../../components/Categories';
-import Restros from '../../components/Restros';
+import {themeColors} from '../../common/utilites/theme';
+import Categories from '../../common/components/Categories';
+import Restros from '../../common/components/Restros';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="p-2">

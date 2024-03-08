@@ -3,13 +3,13 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {getMenuRestroById, urlFor} from '../../api/API';
 import {useRoute} from '@react-navigation/native';
-import {horizontalScale, verticalScale} from '../../styles/utilites/Dimension';
-import {Drawable} from '../../styles/utilites/Drawables';
+import {horizontalScale, verticalScale} from '../../common/utilites/Dimension';
+import {Drawable} from '../../common/utilites/Drawables';
 import {Icon} from 'react-native-paper';
-import {themeColors} from '../../styles/theme';
+import {themeColors} from '../../common/utilites/theme';
 import {useNavigation} from '@react-navigation/native';
-import DishCard from '../../components/DishCard';
-import CartButton from '../../components/CartButton';
+import DishCard from '../../common/components/DishCard';
+import CartButton from '../../common/components/CartButton';
 
 const RestroScreen = () => {
   const [menu, setMenu] = useState([]);

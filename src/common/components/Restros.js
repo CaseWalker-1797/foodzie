@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import RestroCard from './RestroCard';
-import {getAllRestro} from '../api/API';
-import {themeColors} from '../styles/theme';
+import {getAllRestro} from '../../api/API';
+import {themeColors} from '../utilites/theme';
 
 const Restros = () => {
   const [restros, setRestros] = useState([]);
