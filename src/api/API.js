@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react';
 import Axios from 'react-native-axios';
 import _ from 'lodash';
 
+export const urlFor = 'http://192.168.1.10:3000';
+
 export const newUser = ({name, email, password, confirmPassword}) => {
   Axios.post(urlFor + '/api/v1/user/signup', {
     name: name,
@@ -29,8 +31,6 @@ export const checkUser = ({email, password}) => {
       console.log(error.response.data);
     });
 };
-
-export const urlFor = 'http://192.168.1.8:3000';
 
 export const getCategory = async () => {
   const res = await Axios({

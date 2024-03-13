@@ -128,9 +128,11 @@ const CartScreen = () => {
             </Text>
           </View>
         </View>
+        {/* Place Order Button */}
         <TouchableOpacity
           className="justify-center items-center rounded-full p-3"
           style={{backgroundColor: themeColors.bgColor(1)}}
+          onPress={() => navigation.navigate('PreparingOrder')}
         >
           <Text className=" text-lg font-bold text-white">Place Order</Text>
         </TouchableOpacity>

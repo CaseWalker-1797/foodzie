@@ -29,7 +29,7 @@ const Categories = () => {
           return (
             <View className="justify-center items-center mx-3">
               <TouchableOpacity
-                key={item.id}
+                key={item._id}
                 className={'rounded-full' + btnClass}
                 onPress={() => setActive(item.category)}
               >

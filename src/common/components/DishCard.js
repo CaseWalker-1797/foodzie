@@ -13,8 +13,8 @@ import {
 
 const DishCard = ({dish}) => {
   const dispatch = useDispatch();
-  const totalItems = useSelector((state, id) =>
-    selectCartItemsById(state, dish.id),
+  const totalItems = useSelector((state, _id) =>
+    selectCartItemsById(state, dish._id),
   );
   const addItem = () => {
     dispatch(addToCart({...dish}));

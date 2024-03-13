@@ -60,7 +60,7 @@ const RestroScreen = () => {
       <ScrollView className="flex-1 p-2" showsVerticalScrollIndicator={false}>
         <Text className="text-2xl font-bold">Menu</Text>
         {menu.map(dish => (
-          <DishCard key={dish.id} dish={dish} />
+          <DishCard key={dish._id} dish={dish} />
         ))}
       </ScrollView>
       <CartButton />
