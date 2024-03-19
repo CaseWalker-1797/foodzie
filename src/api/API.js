@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import Axios from 'react-native-axios';
 import _ from 'lodash';
 
-export const urlFor = 'http://192.168.1.10:3000';
+export const urlFor = 'http://192.168.1.11:3000';
 
 export const newUser = ({name, email, password, confirmPassword}) => {
   Axios.post(urlFor + '/api/v1/user/signup', {
@@ -52,7 +52,6 @@ export const getAllRestro = async () => {
   let arr = Object.keys(byCourt).map(key => {
     return {court: key, data: byCourt[key]};
   });
-  // console.log('Item ++>>>>', arr[0].data[2]);
   return arr;
 };
 
@@ -63,4 +62,24 @@ export const getMenuRestroById = async ({id}) => {
   });
   const data1 = res.data.data;
   return data1;
+};
+
+export const sendOrder = ({userId, foodItem, quantity, totalPrice}) => {
+  Axios.post(urlFor + '/api/v1/order', {
+    userId: userId,
+    items: [
+      {
+        foodItem,
+        quantity,
+      },
+    ],
+    totalPrice: totalPrice,
+  })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  console.log('Order Sent', userId, foodItem, quantity, totalPrice);
 };

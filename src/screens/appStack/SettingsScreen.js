@@ -46,8 +46,7 @@ const SettingsScreen = () => {
         ))}
         <TouchableOpacity
           className="flex-row bg-white justify-center border border-gray-100 m-2 p-2 rounded-full"
-          style={styles.container}
-        >
+          style={styles.container}>
           <View className="flex-1 flex-row bg-white justify-center items-center  space-x-4">
             <Icon source="logout" size={24} />
             <Text className="text-xl font-bold">Logout</Text>

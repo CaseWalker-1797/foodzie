@@ -18,7 +18,7 @@ import {
   selectCartTotal,
 } from '../../redux/slices/cartSlice';
 import {horizontalScale, verticalScale} from '../../common/utilites/Dimension';
-import {urlFor} from '../../api/API';
+import {sendOrder, urlFor} from '../../api/API';
 
 const CartScreen = () => {
   const navigation = useNavigation();
@@ -49,8 +49,7 @@ const CartScreen = () => {
         <TouchableOpacity
           className="absolute z-10 left-2 rounded-full p-1"
           style={{backgroundColor: themeColors.bgColor(1)}}
-          onPress={() => navigation.goBack()}
-        >
+          onPress={() => navigation.goBack()}>
           <Icon source="arrow-left" size={24} color="white" />
         </TouchableOpacity>
         <Text className="text-3xl font-bold p-6">Your Cart</Text>
@@ -58,14 +57,12 @@ const CartScreen = () => {
       {/* Delivery Status */}
       <View
         className="flex-row justify-between p-4"
-        style={{backgroundColor: themeColors.bgColor(0.2)}}
-      >
+        style={{backgroundColor: themeColors.bgColor(0.2)}}>
         <Text>Delivery in 20-30 minutes</Text>
         <TouchableOpacity>
           <Text
             className=" text-sm font-bold"
-            style={{color: themeColors.bgColor(1)}}
-          >
+            style={{color: themeColors.bgColor(1)}}>
             Change
           </Text>
         </TouchableOpacity>
@@ -79,8 +76,7 @@ const CartScreen = () => {
               {/* Total Dishes */}
               <Text
                 className="text-base font-bold p-1"
-                style={{color: themeColors.bgColor(1)}}
-              >
+                style={{color: themeColors.bgColor(1)}}>
                 x{item.length}
               </Text>
               <View className="flex-1 flex-row justify-start items-center space-x-2">
@@ -100,8 +96,7 @@ const CartScreen = () => {
                 <TouchableOpacity
                   className="rounded-full p-1"
                   style={{backgroundColor: themeColors.bgColor(1)}}
-                  onPress={() => dispatch(removeFromCart({id: dish.id}))}
-                >
+                  onPress={() => dispatch(removeFromCart({id: dish.id}))}>
                   <Icon source="minus" size={20} color="white" />
                 </TouchableOpacity>
               </View>
@@ -112,8 +107,7 @@ const CartScreen = () => {
       {/* Cart Total */}
       <View
         className="justify-center rounded-t-3xl p-6 space-y-4 "
-        style={{backgroundColor: themeColors.bgColor(0.2)}}
-      >
+        style={{backgroundColor: themeColors.bgColor(0.2)}}>
         <View className="flex-row justify-between items-center">
           <View className="p-2 space-y-2">
             <Text className="text-sm ">Sub Total</Text>
@@ -132,8 +126,15 @@ const CartScreen = () => {
         <TouchableOpacity
           className="justify-center items-center rounded-full p-3"
           style={{backgroundColor: themeColors.bgColor(1)}}
-          onPress={() => navigation.navigate('PreparingOrder')}
-        >
+          onPress={() => {
+            sendOrder({
+              userId: '60d9e1f9d4a8a80015f0b3d0',
+              foodItem: cartItems,
+              quantity: {item: cartItems.length},
+              totalPrice: cartTotal + deliveryFee,
+            });
+            navigation.navigate('PreparingOrder');
+          }}>
           <Text className=" text-lg font-bold text-white">Place Order</Text>
         </TouchableOpacity>
       </View>
