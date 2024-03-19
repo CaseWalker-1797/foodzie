@@ -22,6 +22,7 @@ const SignInScreen = () => {
       onToggleSnackBar();
       setMsg(msg1);
       setVisible(true);
+      navigation.navigate('App');
     } else {
       console.log('before++++++++++++++++', email, password);
       checkUser({email, password});
@@ -38,8 +39,7 @@ const SignInScreen = () => {
       />
       <ScrollView
         className="m-2 p-2 space-y-3"
-        showsVerticalScrollIndicator={false}
-      >
+        showsVerticalScrollIndicator={false}>
         <Text className=" font-bold self-start text-4xl">Sign In</Text>
         {/* User email */}
         <View className="flex-row justify-center items-center space-x-2">
@@ -73,16 +73,14 @@ const SignInScreen = () => {
         {/* Forgot Password Button */}
         <TouchableOpacity
           className="items-end"
-          onPress={() => navigation.navigate('ForgotPassword-')}
-        >
+          onPress={() => navigation.navigate('ForgotPassword-')}>
           <Text className="text-base font-semibold">Forgot Password</Text>
         </TouchableOpacity>
         {/* SignIn Button */}
         <TouchableOpacity
           className="items-center p-3 rounded-full"
           style={{backgroundColor: themeColors.bgColor(1), elevation: 4}}
-          onPress={onSignInPress}
-        >
+          onPress={onSignInPress}>
           <Text className="text-xl font-bold text-white">Sign In</Text>
         </TouchableOpacity>
         <Text className=" font-semibold text-xl text-center">Or</Text>
@@ -109,8 +107,7 @@ const SignInScreen = () => {
           <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
             <Text
               className="text-base font-bold"
-              style={{color: themeColors.bgColor(1)}}
-            >
+              style={{color: themeColors.bgColor(1)}}>
               SignUp
             </Text>
           </TouchableOpacity>

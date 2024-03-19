@@ -81,5 +81,4 @@ export const sendOrder = ({userId, foodItem, quantity, totalPrice}) => {
     .catch(error => {
       console.log(error);
     });
-  console.log('Order Sent', userId, foodItem, quantity, totalPrice);
 };

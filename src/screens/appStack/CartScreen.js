@@ -128,7 +128,7 @@ const CartScreen = () => {
           style={{backgroundColor: themeColors.bgColor(1)}}
           onPress={() => {
             sendOrder({
-              userId: '60d9e1f9d4a8a80015f0b3d0',
+              userId: {id: user._id},
               foodItem: cartItems,
               quantity: {item: cartItems.length},
               totalPrice: cartTotal + deliveryFee,

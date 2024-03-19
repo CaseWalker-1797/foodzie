@@ -11,9 +11,8 @@ const MainNav = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="App"
-        screenOptions={{headerShown: false}}
-      >
+        initialRouteName="Auth"
+        screenOptions={{headerShown: false}}>
         <Stack.Screen name="Auth" component={AuthNav} />
         <Stack.Screen name="App" component={AppNav} />
       </Stack.Navigator>
