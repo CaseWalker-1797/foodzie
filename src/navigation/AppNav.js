@@ -7,6 +7,7 @@ import CartScreen from '../screens/appStack/CartScreen';
 import SettingsScreen from '../screens/appStack/SettingsScreen';
 import PreparingOrderScreen from '../screens/appStack/PreparingOrderScreen';
 import DeliveryScreen from '../screens/appStack/DeliveryScreen';
+import YourOrderScreen from '../screens/appStack/YourOrderScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,8 +15,7 @@ const AppNav = () => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
-      screenOptions={{headerShown: false}}
-    >
+      screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Restro" component={RestroScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
@@ -34,6 +34,7 @@ const AppNav = () => {
         options={{presentation: 'fullScreenModal'}}
         component={DeliveryScreen}
       />
+      <Stack.Screen name="YourOrder" component={YourOrderScreen} />
     </Stack.Navigator>
   );
 };

@@ -19,16 +19,18 @@ import {
 } from '../../redux/slices/cartSlice';
 import {horizontalScale, verticalScale} from '../../common/utilites/Dimension';
 import {sendOrder, urlFor} from '../../api/API';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CartScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const deliveryFee = 3;
-  const subTotal = 0;
-  const restro = useSelector(selectRestro);
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
   const [dishList, setDishList] = useState([]);
+  const getToken = async () => {
+    const value = await AsyncStorage.getItem('userToken');
+  };
 
   useEffect(() => {
     const items = cartItems.reduce((group, item) => {
@@ -128,9 +130,9 @@ const CartScreen = () => {
           style={{backgroundColor: themeColors.bgColor(1)}}
           onPress={() => {
             sendOrder({
-              userId: {id: user._id},
+              token: getToken,
               foodItem: cartItems,
-              quantity: {item: cartItems.length},
+              quantity: cartItems.length,
               totalPrice: cartTotal + deliveryFee,
             });
             navigation.navigate('PreparingOrder');

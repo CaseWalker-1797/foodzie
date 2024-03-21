@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {Icon, IconButton, TextInput, Snackbar} from 'react-native-paper';
 import {themeColors} from '../../common/utilites/theme';
 import {checkUser} from '../../api/API';
+import { Drawable } from '../../common/utilites/Drawables';
 
 const SignInScreen = () => {
   const navigation = useNavigation();
@@ -22,20 +23,20 @@ const SignInScreen = () => {
       onToggleSnackBar();
       setMsg(msg1);
       setVisible(true);
-      navigation.navigate('App');
     } else {
       console.log('before++++++++++++++++', email, password);
       checkUser({email, password});
       onToggleSnackBar();
       setMsg(msg2 + email);
       console.log('after++++++++++++++++', email, password);
+      navigation.navigate('App');
     }
   };
   return (
     <SafeAreaView className="flex-1 bg-white">
       <Image
         className="w-full h-2/5"
-        source={require('../../assets/images/vector/signinImage.png')}
+        source={Drawable.SignIn}
       />
       <ScrollView
         className="m-2 p-2 space-y-3"
@@ -57,7 +58,7 @@ const SignInScreen = () => {
         </View>
         {/* User password */}
         <View className="flex-row justify-center items-center space-x-2">
-          <Icon source="account" size={25} />
+          <Icon source="key" size={25} />
           <TextInput
             mode="outlined"
             className="flex-1"

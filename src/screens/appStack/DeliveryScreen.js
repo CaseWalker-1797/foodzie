@@ -22,7 +22,7 @@ const DeliveryScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       {/* Delivery Tracking Map */}
-      <MapView
+      {/* <MapView
         provider={MapView.PROVIDER_GOOGLE}
         initialRegion={{
           latitude: 22.2887492,
@@ -42,7 +42,7 @@ const DeliveryScreen = () => {
           description="Choose More Choose Right"
           pinColor={themeColors.bgColor(1)}
         />
-      </MapView>
+      </MapView> */}
       {/* Delivery Details */}
       <View className="p-3 rounded-t-3xl space-y-3 justify-center">
         <View className="flex-row justify-between items-center p-2">

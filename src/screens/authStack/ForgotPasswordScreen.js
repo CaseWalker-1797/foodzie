@@ -4,6 +4,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {Icon, TextInput} from 'react-native-paper';
 import {themeColors} from '../../common/utilites/theme';
 import {useNavigation} from '@react-navigation/native';
+import {Drawable} from '../../common/utilites/Drawables';
 
 const ForgotPasswordScreen = () => {
   const navigation = useNavigation();
@@ -13,10 +14,7 @@ const ForgotPasswordScreen = () => {
   };
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <Image
-        className="w-full h-2/5"
-        source={require('../../assets/images/vector/signinImage.png')}
-      />
+      <Image className="w-full h-2/5" source={Drawable.ForgotPassword} />
       <View className="m-2 p-2 space-y-3">
         <Text className=" font-bold self-start text-4xl">Forgot Password</Text>
         <Text className="text-base font-semibold self-start">
@@ -41,8 +39,7 @@ const ForgotPasswordScreen = () => {
         <TouchableOpacity
           className="items-center p-3 rounded-full"
           style={{backgroundColor: themeColors.bgColor(1), elevation: 4}}
-          onPress={onSubmitpress}
-        >
+          onPress={onSubmitpress}>
           <Text className="text-xl font-bold text-white">Submit</Text>
         </TouchableOpacity>
       </View>

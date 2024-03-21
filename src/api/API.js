@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import Axios from 'react-native-axios';
 import _ from 'lodash';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const urlFor = 'http://192.168.1.11:3000';
 
@@ -24,8 +25,9 @@ export const checkUser = ({email, password}) => {
     email: email,
     password: password,
   })
-    .then(response => {
-      console.log(response.data);
+    .then(async response => {
+      const useToken = response.data.token;
+      await AsyncStorage.setItem('userToken', useToken);
     })
     .catch(error => {
       console.log(error.response.data);
@@ -64,21 +66,27 @@ export const getMenuRestroById = async ({id}) => {
   return data1;
 };
 
-export const sendOrder = ({userId, foodItem, quantity, totalPrice}) => {
+export const sendOrder = ({token, foodItem, quantity, totalPrice}) => {
   Axios.post(urlFor + '/api/v1/order', {
-    userId: userId,
-    items: [
-      {
-        foodItem,
-        quantity,
-      },
-    ],
+    token: token,
+    item: {foodItem, quantity},
     totalPrice: totalPrice,
   })
     .then(response => {
-      console.log(response.data);
+      console.log(JSON.stringify(response.data));
+      console.log('Order Placed', foodItem);
     })
     .catch(error => {
       console.log(error);
     });
+};
+
+export const getOrder = async () => {
+  const res = await Axios({
+    method: 'GET',
+    url: urlFor + '/api/v1/order',
+  });
+  const data1 = res.data.data;
+  console.log('Order Details', data1);
+  return data1;
 };

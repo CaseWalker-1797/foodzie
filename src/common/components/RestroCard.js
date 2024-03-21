@@ -17,22 +17,20 @@ const RestroCard = ({item}) => {
   const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback
-      onPress={() => navigation.navigate('Restro', {...item})}
-    >
+      onPress={() => navigation.navigate('Restro', {...item})}>
       <View
-        className="justify-center bg-white items-start rounded-3xl m-2 space-y-2"
-        style={styles.container}
-      >
+        className="bg-white justify-center items-start rounded-3xl m-2 space-y-2"
+        style={styles.container}>
         <Image
           className="rounded-t-3xl"
           source={{uri: urlFor + item.image}}
           style={{
             resizeMode: 'cover',
             height: verticalScale(145),
-            width: '100%',
+            width: horizontalScale(250),
           }}
         />
-        <View _id={item._id} className="justify-center p-4 space-y-1">
+        <View _id={item._id} className="justify-center px-4 py-2 space-y-2">
           <Text className="text-lg font-bold">{item.name}</Text>
           <View className="flex-row items-center space-x-1">
             <Image
@@ -40,7 +38,7 @@ const RestroCard = ({item}) => {
               style={{height: verticalScale(18), width: horizontalScale(18)}}
             />
             <Text className="text-sm">Good Reviews</Text>
-            <Text className="text-sm font-semibold">Type of Restaurant</Text>
+            {/* <Text className="text-sm font-semibold">Type of Restaurant</Text> */}
           </View>
           <View className="flex-row items-center space-x-2">
             <Icon source="map-marker" size={24} />

@@ -14,6 +14,7 @@ import {settings, settingsOptions} from '../../common/constants/Constants';
 import SettingsOptionCard from '../../common/components/SettingsOptionCard';
 import SettingsButton from '../../common/components/SettingsButton';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SettingsScreen = () => {
   const navigation = useNavigation();
@@ -38,7 +39,9 @@ const SettingsScreen = () => {
         size={24}
         onPress={() => navigation.goBack()}
       />
-      <ScrollView className=" flex-1 overflow-visible p-2 space-y-6">
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        className=" flex-1 overflow-visible p-2 space-y-6">
         <Avatar.Text className="self-center" size={96} label="XD" />
         <FlatList data={settings} renderItem={renderData} numColumns={2} />
         {otherOptions.map(option => (
@@ -46,10 +49,17 @@ const SettingsScreen = () => {
         ))}
         <TouchableOpacity
           className="flex-row bg-white justify-center border border-gray-100 m-2 p-2 rounded-full"
-          style={styles.container}>
+          style={styles.container}
+          onPress={() => {
+            clearAll = async () => {
+              await AsyncStorage.clear();
+              console.log('Done.');
+            };
+            navigation.navigate('Auth');
+          }}>
           <View className="flex-1 flex-row bg-white justify-center items-center  space-x-4">
             <Icon source="logout" size={24} />
-            <Text className="text-xl font-bold">Logout</Text>
+            <Text className="text-xl font-bold">Sign Out</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

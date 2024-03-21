@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {Icon, IconButton, TextInput, Snackbar} from 'react-native-paper';
 import {themeColors} from '../../common/utilites/theme';
 import {newUser} from '../../api/API';
+import { Drawable } from '../../common/utilites/Drawables';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -37,7 +38,7 @@ const SignUpScreen = () => {
     <SafeAreaView className="flex-1 bg-white">
       <Image
         className="w-full h-2/5"
-        source={require('../../assets/images/vector/signupImage.png')}
+        source={Drawable.SignUp}
       />
       <ScrollView
         className="m-2 p-2 space-y-3"
