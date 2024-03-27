@@ -10,7 +10,10 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       state.items = [...state.items, action.payload];
-      console.log('An item has been added to cart');
+      console.log(
+        // 'An item has been added to cart ' + JSON.stringify(state.items),
+        'An item has been added to cart ',
+      );
     },
     removeFromCart: (state, action) => {
       let newCart = [...state.items];
@@ -19,7 +22,10 @@ export const cartSlice = createSlice({
       );
       if (itemIndex >= 0) {
         newCart.splice(itemIndex, 1);
-        console.log('An item has been removed from cart');
+        console.log(
+          // 'An item has been removed from cart ' + JSON.stringify(state.items),
+          'An item has been removed from cart ',
+        );
       } else {
         console.log('Cannot remove the item not preset in cart');
       }

@@ -30,6 +30,8 @@ const CartScreen = () => {
   const [dishList, setDishList] = useState([]);
   const getToken = async () => {
     const value = await AsyncStorage.getItem('userToken');
+    console.log('Value    +++++' + value);
+    return value;
   };
 
   useEffect(() => {
@@ -43,6 +45,43 @@ const CartScreen = () => {
     }, {});
     setDishList(items);
   }, [cartItems]);
+
+  const createOrder = () => {
+    const qtyMap = {};
+
+    for (const key in dishList) {
+      if (dishList.hasOwnProperty(key)) {
+        const items = dishList[key];
+        items.forEach(item => {
+          const itemId = item._id;
+          qtyMap[itemId] = (qtyMap[itemId] || 0) + 1;
+        });
+      }
+    }
+
+    const uniqueItemIds = new Set();
+
+    const outputArray = [];
+    for (const key in dishList) {
+      if (dishList.hasOwnProperty(key)) {
+        const items = dishList[key];
+        items.forEach(item => {
+          const itemId = item._id;
+          if (!uniqueItemIds.has(itemId)) {
+            uniqueItemIds.add(itemId);
+            const newItem = {...item, quantity: qtyMap[itemId]};
+            outputArray.push(newItem);
+          }
+        });
+      }
+    }
+
+    console.log(JSON.stringify(outputArray));
+    return outputArray.map(item => ({
+      foodItem: item._id,
+      quantity: item.quantity,
+    }));
+  };
 
   return (
     <View className="flex-1 bg-white">
@@ -74,7 +113,9 @@ const CartScreen = () => {
         {Object.entries(dishList).map(([key, item]) => {
           let dish = item[0];
           return (
-            <View className="flex-row justify-between items-center m-2 p-2 space-x-2">
+            <View
+              key={key}
+              className="flex-row justify-between items-center m-2 p-2 space-x-2">
               {/* Total Dishes */}
               <Text
                 className="text-base font-bold p-1"
@@ -128,11 +169,10 @@ const CartScreen = () => {
         <TouchableOpacity
           className="justify-center items-center rounded-full p-3"
           style={{backgroundColor: themeColors.bgColor(1)}}
-          onPress={() => {
+          onPress={async () => {
             sendOrder({
-              token: getToken,
-              foodItem: cartItems,
-              quantity: cartItems.length,
+              token: await getToken(),
+              item: createOrder(),
               totalPrice: cartTotal + deliveryFee,
             });
             navigation.navigate('PreparingOrder');
