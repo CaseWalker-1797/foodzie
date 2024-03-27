@@ -34,10 +34,10 @@ const CartScreen = () => {
 
   useEffect(() => {
     const items = cartItems.reduce((group, item) => {
-      if (group[item._id]) {
-        group[item._id].push(item);
+      if (group[item.id]) {
+        group[item.id].push(item);
       } else {
-        group[item._id] = [item];
+        group[item.id] = [item];
       }
       return group;
     }, {});
