@@ -3,21 +3,25 @@ export const settings = [
     id: 1,
     name: 'Your Order',
     icon: 'shopping',
+    go: 'YourOrder',
   },
   {
     id: 2,
     name: 'Favorites',
     icon: 'heart',
+    go: 'YourOrder',
   },
   {
     id: 3,
     name: 'Coupons',
     icon: 'ticket-percent',
+    go: 'YourOrder',
   },
   {
     id: 4,
     name: 'FAQs',
     icon: 'information',
+    go: 'YourOrder',
   },
 ];
 

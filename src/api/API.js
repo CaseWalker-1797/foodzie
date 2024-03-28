@@ -3,7 +3,7 @@ import Axios from 'react-native-axios';
 import _ from 'lodash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const urlFor = 'http://192.168.1.11:3000';
+export const urlFor = 'http://192.168.1.7:3000';
 
 export const newUser = ({name, email, password, confirmPassword}) => {
   Axios.post(urlFor + '/api/v1/user/signup', {
@@ -66,15 +66,14 @@ export const getMenuRestroById = async ({id}) => {
   return data1;
 };
 
-export const sendOrder = ({token, foodItem, quantity, totalPrice}) => {
+export const sendOrder = ({token, item, totalPrice}) => {
   Axios.post(urlFor + '/api/v1/order', {
     token: token,
-    item: {foodItem, quantity},
+    item: item,
     totalPrice: totalPrice,
   })
     .then(response => {
       console.log(JSON.stringify(response.data));
-      console.log('Order Placed', foodItem);
     })
     .catch(error => {
       console.log(error);
@@ -87,6 +86,6 @@ export const getOrder = async () => {
     url: urlFor + '/api/v1/order',
   });
   const data1 = res.data.data;
-  console.log('Order Details', data1);
+  console.log('Order Details', JSON.stringify(data1));
   return data1;
 };
